@@ -12,13 +12,30 @@ let appData = {
     savings : false
 };
 
-let exp1 = prompt("Введите обязательную статью расходов в этом месяце", "");
-let answ1 = +prompt("Во сколько обойдется?");
-let exp2 = prompt("Введите обязательную статью расходов в этом месяце", "");
-let answ2 = +prompt("Во сколько обойдется?");
 
-appData.expenses[exp1] = answ1;
-appData.expenses[exp2] = answ2;
+for (let i=0; i<2; i++){
+    let exp = prompt("Введите обязательную статью расходов в этом месяце", "");
+    let answ = +prompt("Во сколько обойдется?");
+    
+    if(typeof(exp) == 'string' && typeof(exp) != null && typeof(answ) != null && answ != '' 
+    && answ != '') {
+        appData.expenses[exp] = answ;
+    } else {
+        i--;
+        continue;
+    }
+    
+}
 
-alert("Расход на день: "+(appData.moneyData-appData.expenses[exp1]-appData.expenses[exp2])/30);
+appData.dayCach = appData.moneyData/30;
+
+if(appData.dayCach < 100) {
+    console.log('Минимальный уровень расходов');
+} else if (appData.dayCach <= 1000) {
+    console.log('Нормальный уровень расходов');
+} else if (appData.dayCach > 1000) {
+    console.log('Максимальный уровень расходов');
+} else {
+    console.log('Ошибка');
+}
 
