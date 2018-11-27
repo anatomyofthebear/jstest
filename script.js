@@ -91,3 +91,5 @@ function chooseOptExpenses() {
         appData.optionalExpenses[i] = exp;
     }
 }
+
+chooseOptExpenses();
